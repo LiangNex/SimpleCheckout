@@ -8,15 +8,34 @@ import React from 'react';
 import fetch from 'isomorphic-fetch';
 import Helmet from 'react-helmet';
 
-const CallAdyenWebSDK = (props) => {
-	const paymentSession = props.paymentSession;
-	const sdkConfigObj = {
-		context : 'test' // change it to 'live' when going live.
-	};
-	const chckt = window.chckt;
-	const checkout = chckt.checkout(paymentSession, '#transaction-panel', sdkConfigObj);
-	return null;
-};
+class CallAdyenWebSDK extends React.Component{
+	constructor(props){
+		super(props)
+	}
+	
+	componentDidMount () {
+		const csf = window.csf;
+		const secureFields = csf(
+			{
+				configObject : {
+					originKey : "pub.v2.8115211697540382.aHR0cHM6Ly9jaGVja291dC1ndm5tdHNudHB1Lm5vdy5zaC8.ogHGWsRNrxw4KVaykRgdUnCNRlnW9rv1DDqbFbxxOUs",
+					cardGroupTypes : ['visa', 'mc']
+				},
+				rootNode: '.cards-div'
+			}
+		)
+	}
+	
+	render(){
+		const paymentSession = this.props.paymentSession;
+		const sdkConfigObj = {
+			context : 'test' // change it to 'live' when going live.
+		};
+		const chckt = window.chckt;
+		const checkout = chckt.checkout(paymentSession, '#transaction-panel', sdkConfigObj);
+		return null;
+	}
+}
 
 class Payment extends React.Component{
 	constructor(props){
@@ -56,7 +75,7 @@ class Payment extends React.Component{
 			
 			return(
 				<div>
-						<CallAdyenWebSDK paymentSession={paymentSession}/>
+					<CallAdyenWebSDK paymentSession={paymentSession}/>
 				</div>
 			)
 		}

@@ -87,6 +87,7 @@ export default class App extends Component {
 	  	<MainLayout>
 			  <Helmet>
 				  <script type="text/javascript" src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSDK.1.3.2.min.js"/>
+				  <script type="text/javascript" src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSecuredFields.1.1.1.min.js"/>
 			  </Helmet>
 			  <AppContainer>
 					  <ContentContainer>
@@ -103,6 +104,23 @@ export default class App extends Component {
 											  />
 										  ))
 									  }
+									  <div className="cards-div">
+										  <div className="js-chckt-pm__pm-holder">
+											  <input type="hidden" name="txvariant" value="card"/>
+											  <br/>
+											  <label>
+												  <span className="input-field" data-hosted-id="hostedCardNumberField" data-cse="encryptedCardNumber"/>
+											  </label>
+											  <br/>
+											  <label>
+												  <span className="input-field" data-hosted-id="hostedExpiryDateField" data-cse="encryptedExpiryDate"/>
+											  </label>
+											  <br/>
+											  <label>
+												  <span className="input-field" data-hosted-id="hostedSecurityCodeField" data-cse="encryptedSecurityCode"/>
+											  </label>
+										  </div>
+									  </div>
 								  </Content>
 								  <Route render={(props) => <NoMatch {...props} /> } />
 							  </Switch>
