@@ -13,19 +13,6 @@ class CallAdyenWebSDK extends React.Component{
 		super(props)
 	}
 	
-	componentDidMount () {
-		const csf = window.csf;
-		const secureFields = csf(
-			{
-				configObject : {
-					originKey : "pub.v2.8115211697540382.aHR0cHM6Ly9jaGVja291dC1ydGZoZ3Njc2NjLm5vdy5zaD4.jM9FarSo32eQ6d58RG9lnOzliMutfR-GQMeyizflkAs",
-					cardGroupTypes : ['visa', 'mc']
-				},
-				rootNode: '.cards-div'
-			}
-		)
-	}
-	
 	render(){
 		const paymentSession = this.props.paymentSession;
 		const sdkConfigObj = {
@@ -33,6 +20,17 @@ class CallAdyenWebSDK extends React.Component{
 		};
 		const chckt = window.chckt;
 		const checkout = chckt.checkout(paymentSession, '#transaction-panel', sdkConfigObj);
+		
+		const csf = window.csf;
+		const secureFields = csf(
+			{
+				configObject : {
+					originKey : "pub.v2.8115211697540382.aHR0cHM6Ly9jaGVja291dC1ydGZoZ3Njc2NjLm5vdy5zaD4.jM9FarSo32eQ6d58RG9lnOzliMutfR-GQMeyizflkAs",
+					cardGroupTypes : ['visa', 'mc']
+				},
+				rootNode: '#cards-div'
+			}
+		)
 		return null;
 	}
 }
