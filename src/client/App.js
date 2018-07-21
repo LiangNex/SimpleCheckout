@@ -1,0 +1,114 @@
+import React, { Component } from "react";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import {
+	faCheckSquare,
+	faCoffee,
+	faCreditCard,
+	faSpinner,
+	faArrowLeft,
+	faTimes,
+	faCalculator,
+	faPlus,
+	faMinus,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+	BrowserRouter as Router,
+	Route,
+	Link,
+	Switch
+} from "react-router-dom";
+import styled from 'styled-components';
+import routes from './components/RouteConfig';
+import SideBar from './components/SideBar';
+import MainLayout from './layouts/MainLayout';
+import NoMatch from './components/NoMatch';
+import Helmet from 'react-helmet';
+
+
+const AppContainer = styled.div`
+	display: flex;
+`;
+
+const ContentContainer = styled.div`
+	width: 80%;
+	min-height: 100vh;
+	margin: 4rem 0 4rem 20%;
+	display: flex;
+`;
+
+const Content = styled.div`
+	width: 100%;
+	max-width: 30rem;
+	display: flex;
+	margin: 3rem auto;
+`;
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      price: null,
+      is_order_placed: false,
+    };
+    this.handlePriceChange = this.handlePriceChange.bind(this);
+  }
+
+  // componentDidMount() {
+  //   fetch("/api/getUsername")
+  //     .then(res => res.json())
+  //     .then(user => this.setState({ username: user.username }));
+  // }
+  
+  handlePriceChange(price){
+    this.setState({
+      price: price
+    })
+  }
+
+  render() {
+	  library.add(
+		  fab,
+		  faCheckSquare,
+		  faCoffee,
+		  faCreditCard,
+		  faSpinner,
+		  faArrowLeft,
+		  faTimes,
+		  faCalculator,
+		  faPlus,
+		  faMinus,
+	  );
+   
+	  const price = this.state.price;
+	  console.log(`App js price: ${price}`);
+	  
+	  return(
+	  	<MainLayout>
+			  <Helmet>
+				  <script type="text/javascript" src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSDK.1.3.2.min.js"/>
+			  </Helmet>
+			  <AppContainer>
+					  <ContentContainer>
+						  <SideBar/>
+							  <Switch>
+								  <Content id={'transaction-panel'}>
+									  {
+										  routes.map((route, index)=> (
+											  <Route
+												  key={index}
+												  path={route.path}
+												  exact={route.exact}
+												  component={route.component}
+											  />
+										  ))
+									  }
+								  </Content>
+								  <Route render={(props) => <NoMatch {...props} /> } />
+							  </Switch>
+					  </ContentContainer>
+			  </AppContainer>
+		  </MainLayout>
+	  )
+  }
+}
