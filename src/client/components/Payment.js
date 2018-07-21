@@ -25,7 +25,7 @@ class CallAdyenWebSDK extends React.Component{
 		const secureFields = csf(
 			{
 				configObject : {
-					originKey : "pub.v2.8115211697540382.aHR0cHM6Ly9jaGVja291dC1ydGZoZ3Njc2NjLm5vdy5zaD4.jM9FarSo32eQ6d58RG9lnOzliMutfR-GQMeyizflkAs",
+					originKey : "pub.v2.8115211697540382.aHR0cHM6Ly9zaW1wbGVjaGVja291dC5ub3cuc2gv.rjPhMVnh2pL2Ql5Cfb5VHD8LTXbDBMGtUHWUS5CzbQ8",
 					cardGroupTypes : ['visa', 'mc']
 				},
 				rootNode: '#cards-div'
