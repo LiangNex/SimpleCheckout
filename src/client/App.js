@@ -47,25 +47,8 @@ const Content = styled.div`
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      price: null,
-      is_order_placed: false,
-    };
-    this.handlePriceChange = this.handlePriceChange.bind(this);
   }
-
-  // componentDidMount() {
-  //   fetch("/api/getUsername")
-  //     .then(res => res.json())
-  //     .then(user => this.setState({ username: user.username }));
-  // }
   
-  handlePriceChange(price){
-    this.setState({
-      price: price
-    })
-  }
-
   render() {
 	  library.add(
 		  fab,
@@ -79,9 +62,6 @@ export default class App extends Component {
 		  faPlus,
 		  faMinus,
 	  );
-   
-	  const price = this.state.price;
-	  console.log(`App js price: ${price}`);
 	  
 	  return(
 	  	<MainLayout>

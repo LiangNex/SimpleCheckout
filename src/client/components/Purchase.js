@@ -88,8 +88,6 @@ class Purchase extends React.Component{
 	
 	render(){
 		const count = this.state.count;
-		console.log(Date.now());
-		
 		const prePrice = count * 2;
 		
 		return(
