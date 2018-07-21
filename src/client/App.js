@@ -104,26 +104,26 @@ export default class App extends Component {
 											  />
 										  ))
 									  }
-									  <div className="cards-div">
-										  <div className="js-chckt-pm__pm-holder">
-											  <input type="hidden" name="txvariant" value="card"/>
-											  <br/>
-											  <label>
-												  <span className="input-field" data-hosted-id="hostedCardNumberField" data-cse="encryptedCardNumber"/>
-											  </label>
-											  <br/>
-											  <label>
-												  <span className="input-field" data-hosted-id="hostedExpiryDateField" data-cse="encryptedExpiryDate"/>
-											  </label>
-											  <br/>
-											  <label>
-												  <span className="input-field" data-hosted-id="hostedSecurityCodeField" data-cse="encryptedSecurityCode"/>
-											  </label>
-										  </div>
-									  </div>
 								  </Content>
 								  <Route render={(props) => <NoMatch {...props} /> } />
 							  </Switch>
+							  <div id="cards-div">
+								  <div className="js-chckt-pm__pm-holder">
+									  <input type="hidden" name="txvariant" value="card"/>
+									  <br/>
+									  <label>
+										  <span className="input-field" data-hosted-id="hostedCardNumberField" data-cse="encryptedCardNumber"/>
+									  </label>
+									  <br/>
+									  <label>
+										  <span className="input-field" data-hosted-id="hostedExpiryDateField" data-cse="encryptedExpiryDate"/>
+									  </label>
+									  <br/>
+									  <label>
+										  <span className="input-field" data-hosted-id="hostedSecurityCodeField" data-cse="encryptedSecurityCode"/>
+									  </label>
+								  </div>
+							  </div>
 					  </ContentContainer>
 			  </AppContainer>
 		  </MainLayout>
