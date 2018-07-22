@@ -88,6 +88,8 @@ router.get('/api/transaction', function (req, res, next) {
 		let origin = req.protocol + '://' + req.hostname;
 		if (origin.indexOf('localhost') > -1){
 			origin = 'http://localhost:3000';
+		} else {
+			origin = 'https://simplecheckout.now.sh';
 		}
 		console.log(`origin: ${origin}`);
 		
