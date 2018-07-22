@@ -4,8 +4,8 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import indexRouter from './routes/index';
-import apiRouter from './routes/api';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 
 const app = express();
 
@@ -24,7 +24,6 @@ app.use(cors({
 }));
 
 app.use('/', indexRouter);
-app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

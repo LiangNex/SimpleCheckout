@@ -7,7 +7,8 @@
 import Home from './Home';
 import Purchase from './Purchase';
 import Payment from './Payment';
-import FetchPaymentSession from '../api/FetchPaymentSession';
+import Transaction from './Transaction';
+import Result from './Result';
 
 const routes = [
 	{
@@ -22,6 +23,14 @@ const routes = [
 	{
 		path: '/payment/:price',
 		component: Payment,
+	},
+	{
+		path: '/transaction',
+		component: Transaction,
+	},
+	{
+		path: '/result',
+		component: Result,
 	}
 ];
 
