@@ -24,6 +24,7 @@ import SideBar from './components/SideBar';
 import MainLayout from './layouts/MainLayout';
 import NoMatch from './components/NoMatch';
 import Helmet from 'react-helmet';
+import PaymentForm from './components/PaymentForm';
 
 
 const AppContainer = styled.div`
@@ -43,6 +44,7 @@ const Content = styled.div`
 	display: flex;
 	margin: 3rem auto;
 `;
+
 
 export default class App extends Component {
   constructor(props) {
@@ -67,43 +69,46 @@ export default class App extends Component {
 	  	<MainLayout>
 			  <Helmet>
 				  <script type="text/javascript" src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSDK.1.3.2.min.js"/>
-				  <script type="text/javascript" src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSecuredFields.1.1.1.min.js"/>
+				  {/*<script type="text/javascript" src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSecuredFields.1.1.1.min.js"/>*/}
 			  </Helmet>
 			  <AppContainer>
 					  <ContentContainer>
 						  <SideBar/>
 							  <Switch>
-								  <Content id={'transaction-panel'}>
+								  <Content>
+									  <PaymentForm/>
 									  {
 										  routes.map((route, index)=> (
-											  <Route
-												  key={index}
-												  path={route.path}
-												  exact={route.exact}
-												  component={route.component}
-											  />
+										  	<div key={index}>
+												  <Route
+													  path={route.path}
+													  exact={route.exact}
+													  component={route.component}
+												  >
+												  </Route>
+											  </div>
 										  ))
 									  }
 								  </Content>
 								  <Route render={(props) => <NoMatch {...props} /> } />
 							  </Switch>
-							  <div id="cards-div">
-								  <div className="js-chckt-pm__pm-holder">
-									  <input type="hidden" name="txvariant" value="card"/>
-									  <br/>
-									  <label>
-										  <span className="input-field" data-hosted-id="hostedCardNumberField" data-cse="encryptedCardNumber"/>
-									  </label>
-									  <br/>
-									  <label>
-										  <span className="input-field" data-hosted-id="hostedExpiryDateField" data-cse="encryptedExpiryDate"/>
-									  </label>
-									  <br/>
-									  <label>
-										  <span className="input-field" data-hosted-id="hostedSecurityCodeField" data-cse="encryptedSecurityCode"/>
-									  </label>
-								  </div>
-							  </div>
+							  {/*<div id="cards-div">*/}
+								  {/*<div className="js-chckt-pm__pm-holder">*/}
+									  {/*<input type="hidden" name="txvariant" value="card"/>*/}
+									  {/*<br/>*/}
+									  {/*<label>*/}
+										  {/*<span className="input-field" data-hosted-id="hostedCardNumberField" data-cse="encryptedCardNumber"/>*/}
+									  {/*</label>*/}
+									  {/*<br/>*/}
+									  {/*<label>*/}
+										  {/*<span className="input-field" data-hosted-id="hostedExpiryDateField" data-cse="encryptedExpiryDate"/>*/}
+									  {/*</label>*/}
+									  {/*<br/>*/}
+									  {/*<label>*/}
+										  {/*<span className="input-field" data-hosted-id="hostedSecurityCodeField" data-cse="encryptedSecurityCode"/>*/}
+									  {/*</label>*/}
+								  {/*</div>*/}
+							  {/*</div>*/}
 					  </ContentContainer>
 			  </AppContainer>
 		  </MainLayout>
